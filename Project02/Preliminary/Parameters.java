@@ -8,8 +8,9 @@ public class Parameters {
     static int g = 10;     //gravity 10 m/s^2
     static int m0 = 0;     //0 kg
     static double m1, m2, m3;
-    static int t0;          //0 second
+    static int t0 = 0;          //0 second
     static int t;
+    static int f0 = 0;
     static double f1, f2, f3;   //friction
     static double x1, y1, x2, y2, x3, y3;
 
@@ -109,6 +110,54 @@ public class Parameters {
 
     }
 
+    static ArrayList<Integer> forces = new ArrayList<>();
+
+    public static void force(){
+        for (int i = 0; i < times.size(); i++) {        //just adding the number of forces until the email is answered
+            forces.add(0);
+        }
+    }
+
+    public static void resultPrinter(){
+        System.out.print("The mass of object 1 is: ");      //masses
+        System.out.println(m1 + "kg");
+        System.out.print("The mass of object 2 is: ");
+        System.out.println(m2+ "kg");
+        System.out.print("The mass of object 3 is: ");
+        System.out.println(m3+ "kg");
+
+        System.out.println();
+
+        System.out.print("The friction of object 1 is: ");      //frictions
+        System.out.println(f1);
+        System.out.print("The friction of object 2 is: ");
+        System.out.println(f2);
+        System.out.print("The friction of object 3 is: ");
+        System.out.println(f3);
+
+        System.out.println();
+
+        System.out.println("The given times are:");             //times
+        String tPrinter = "t";
+        System.out.println("t0: " + t0);
+        for (int i = 0; i < times.size(); i++) {
+            System.out.print(tPrinter + (i+1) + ": ");
+            System.out.print(times.get(i));
+            System.out.println(" seconds");
+        }
+
+        System.out.println();
+
+        System.out.println("The forces are:");             //forces
+        String fPrinter = "F";
+        System.out.println("F0: " + f0);
+        for (int i = 0; i < forces.size(); i++) {
+            System.out.print(fPrinter + (i+1) + ": ");
+            System.out.print(forces.get(i));
+            System.out.println(" N");
+        }
+    }
+
     public static void run() {       // to run the program
         massOne();
         massTwo();
@@ -119,6 +168,10 @@ public class Parameters {
         frictionThree();
 
         time();
+
+        force();
+
+        resultPrinter();
     }
 
     public static void main(String[] args) {
